@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Laba1_ISTTP.Choreography>
+
+
+    @{
+        ViewData["Title"] = "Choreography";
+    }
+
+    <h1> @ViewBag.StyleName  Choreographies</h1>
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Music)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Dancer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Style)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="table-success">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Music)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dancer.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Style.Name)
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-outline-success" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn btn-outline-warning" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
